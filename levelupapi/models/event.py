@@ -1,3 +1,4 @@
+  
 from django.db import models
 
 
@@ -19,4 +20,7 @@ class Event(models.Model):
     description = models.TextField()
     title = models.CharField(max_length=100)
     attendees = models.ManyToManyField("Gamer", through="EventGamer", related_name="attending")
+
+    def __str__(self) -> str:
+        return f'{self.game.name} on {self.date} hosted by {self.host}'
     

@@ -1,0 +1,25 @@
+[
+    {   
+        "model": "levelupapi.game",
+        "pk": 1,
+        "fields": {
+            "name": "Chess",
+            "game_type": 1, 
+            "description": "Chess is one of the oldest and most popular board games. It is played by two opponents on a checkered board, commonly white and black. The objective of the game is to capture the opponent's king.",
+            "number_of_players": 4,
+            "gamer": 1, 
+            "maker": "Mattel"
+        }
+    },{
+        "model": "levelupapi.game",
+        "pk": 2,
+        "fields": {
+            "name": "Star Wars: The Old Republic",
+            "game_type": 3, 
+            "description": "Multiplayer online role-playing game based in the Star Wars universe.",
+            "number_of_players": 4,
+            "gamer": 1, 
+            "maker": "BioWare"
+        }
+    }
+]
