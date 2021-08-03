@@ -6,4 +6,3 @@ class GameType(models.Model):
         label (CharField): name of the game type
     """
     label = models.CharField(max_length=50)
-    
