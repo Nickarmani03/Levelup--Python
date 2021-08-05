@@ -15,11 +15,22 @@
         "pk": 2,
         "fields": {
             "name": "Star Wars: The Old Republic",
-            "game_type": 3, 
+            "game_type": 2, 
             "description": "Multiplayer online role-playing game based in the Star Wars universe.",
             "number_of_players": 4,
             "gamer": 1, 
             "maker": "BioWare"
         }
+    },{
+            "model": "levelupapi.game",
+            "pk": 3,
+            "fields": {
+                "name": "RuneScape",
+                "game_type": 3, 
+                "description": "Afantasy massively multiplayer online role-playing game developed and published by Jagex, first released in January 2001",
+                "number_of_players": 4,
+                "gamer": 1, 
+                "maker": "Jagex"
+            }
     }
 ]

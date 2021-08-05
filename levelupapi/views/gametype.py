@@ -5,13 +5,21 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from levelupapi.models import GameType
 
+class GameTypeSerializer(serializers.ModelSerializer):
+    """JSON serializer for game types
+    Arguments:
+        serializers
+    """
+    class Meta:
+        model = GameType
+        fields = ('id', 'label')
 
+class GameTypeView(ViewSet):
 class GameTypes(ViewSet):
     """Level up game types"""
 
     def retrieve(self, request, pk=None):
         """Handle GET requests for single game type
-
         Returns:
             Response -- JSON serialized game type
         """
@@ -24,8 +32,18 @@ class GameTypes(ViewSet):
 
     def list(self, request):
         """Handle GET requests to get all game types
-
         Returns:
+            Response -- JSON serialized list of game types
+        """
+        game_types = GameType.objects.all()
+
+        # Note the additional `many=True` argument to the
+        # serializer. It's needed when you are serializing
+        # a list of objects instead of a single object.
+        serializer = GameTypeSerializer(
+            game_types, many=True, context={'request': request})
+        return Response(serializer.data)
+      Returns:
             Response -- JSON serialized list of game types
         """
         gametypes = GameType.objects.all()
@@ -36,13 +54,13 @@ class GameTypes(ViewSet):
         serializer = GameTypeSerializer(
             gametypes, many=True, context={'request': request})
         return Response(serializer.data)
-
-class GameTypeSerializer(serializers.ModelSerializer):
+  
+  class GameTypeSerializer(serializers.ModelSerializer):
     """JSON serializer for game types
-
     Arguments:
         serializers
     """
     class Meta:
         model = GameType
         fields = ('id', 'label')
+
