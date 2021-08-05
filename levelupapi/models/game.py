@@ -17,3 +17,4 @@ class Game(models.Model):
     gamer = models.ForeignKey("Gamer", on_delete=models.CASCADE)
     maker = models.CharField(max_length=50)
     
+ 

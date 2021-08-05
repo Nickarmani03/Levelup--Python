@@ -27,7 +27,7 @@
             "fields": {
                 "name": "RuneScape",
                 "game_type": 3, 
-                "description": "Afantasy massively multiplayer online role-playing game developed and published by Jagex, first released in January 2001",
+                "description": "A fantasy massively multiplayer online role-playing game developed and published by Jagex, first released in January 2001",
                 "number_of_players": 4,
                 "gamer": 1, 
                 "maker": "Jagex"

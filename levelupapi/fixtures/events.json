@@ -24,6 +24,18 @@
             "title": "Star Wars: The Old Republic",
             "attendees": [1]
         }
+    },{
+        "model": "levelupapi.event",
+        "pk": 3,
+        "fields": {
+            "host": 1,
+            "game": 3,
+            "date": "2021-11-01",
+            "time": "3:00 PM",
+            "description": "Friday night Settlers and drinks",
+            "title": "Vale of the Frost King",
+            "attendees": [1]
+        }
     }
 ]
 

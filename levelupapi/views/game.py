@@ -8,18 +8,6 @@ from rest_framework import status
 from levelupapi.models import Game, GameType, Gamer
 
 
-
-class GameSerializer(serializers.ModelSerializer):
-    """JSON serializer for games
-    Arguments:
-        serializer type
-    """
-    class Meta:
-        model = Game
-        fields = ('id', 'name', 'maker', 'number_of_players', 'description', 'game_type')
-        depth = 1
-
-
 class GameView(ViewSet):
     """Level up games"""
 
@@ -37,15 +25,14 @@ class GameView(ViewSet):
         # body of the request from the client.
         game = Game()
         game.name = request.data["name"]
-        game.maker = request.data["maker"]
-        game.number_of_players = request.data["numberOfPlayers"]
         game.description = request.data["description"]
-        game.gamer = gamer
+        game.number_of_players = request.data["number_of_players"]
+        game.maker = request.data["maker"]
 
         # Use the Django ORM to get the record from the database
         # whose `id` is what the client passed as the
         # `gameTypeId` in the body of the request.
-        game_type = GameType.objects.get(pk=request.data["gameTypeId"])
+        game_type = GameType.objects.get(pk=request.data["game_type"])
         game.game_type = game_type
 
         # Try to save the new game to the database, then
@@ -93,13 +80,12 @@ class GameView(ViewSet):
         # from the database whose primary key is `pk`
         game = Game.objects.get(pk=pk)
         game.name = request.data["name"]
-        game.maker = request.data["maker"]
-        game.number_of_players = request.data["numberOfPlayers"]
-        game.description = request.data["description"]
-        game.gamer = gamer
-
-        game_type = GameType.objects.get(pk=request.data["gameTypeId"])
+        game_type = GameType.objects.get(pk=request.data["game_type"])
         game.game_type = game_type
+        game.description = request.data["description"]
+        game.number_of_players = request.data["number_of_players"]
+        game.gamer = gamer
+        game.maker = request.data["maker"]        
         game.save()
 
         # 204 status code means everything worked but the
@@ -142,3 +128,13 @@ class GameView(ViewSet):
         serializer = GameSerializer(
             games, many=True, context={'request': request})
         return Response(serializer.data)
+
+class GameSerializer(serializers.ModelSerializer):
+    """JSON serializer for games
+    Arguments:
+        serializer type
+    """
+    class Meta:
+        model = Game
+        fields = ('id', 'name', 'game_type', 'description', 'number_of_players', 'maker' )
+        depth = 1
