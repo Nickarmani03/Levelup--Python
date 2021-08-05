@@ -19,20 +19,23 @@ class GameView(ViewSet):
 
         # Uses the token passed in the `Authorization` header
         gamer = Gamer.objects.get(user=request.auth.user)
+        
 
         # Create a new Python instance of the Game class
         # and set its properties from what was sent in the
         # body of the request from the client.
         game = Game()
+        game.gamer = gamer
         game.name = request.data["name"]
         game.description = request.data["description"]
-        game.number_of_players = request.data["number_of_players"]
+        game.number_of_players = request.data["numberOfPlayers"]
         game.maker = request.data["maker"]
+        
 
         # Use the Django ORM to get the record from the database
         # whose `id` is what the client passed as the
         # `gameTypeId` in the body of the request.
-        game_type = GameType.objects.get(pk=request.data["game_type"])
+        game_type = GameType.objects.get(pk=request.data["gameTypeId"])
         game.game_type = game_type
 
         # Try to save the new game to the database, then
@@ -80,10 +83,10 @@ class GameView(ViewSet):
         # from the database whose primary key is `pk`
         game = Game.objects.get(pk=pk)
         game.name = request.data["name"]
-        game_type = GameType.objects.get(pk=request.data["game_type"])
+        game_type = GameType.objects.get(pk=request.data["gameTypeId"])
         game.game_type = game_type
         game.description = request.data["description"]
-        game.number_of_players = request.data["number_of_players"]
+        game.number_of_players = request.data["numberOfPlayers"]
         game.gamer = gamer
         game.maker = request.data["maker"]        
         game.save()
