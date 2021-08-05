@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import include
 from django.urls import path
+from django.conf.urls import include
 from rest_framework import routers
 from levelupapi.views import register_user, login_user, GameTypeView, GameView, Event, EventView
 # from levelupapi.views import Games, GameTypes, 
@@ -25,11 +25,8 @@ router.register(r'gametypes', GameTypeView, 'gametype')
 router.register(r'games', GameView, 'game')
 # router.register(r'gametypes', GameTypes, 'gametype')
 # router.register(r'games', Games, 'game')
-router.register(r'events', Event, 'event')
 router.register(r'events', EventView, 'event')
-from levelupapi.views import register_user, login_user
-from rest_framework import routers
-
+router.register(r'events', Event, 'event')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,15 +40,5 @@ urlpatterns = [
     # Requests to http://localhost:8000/login will be routed to the login_user function
     path('login', login_user),
 
-    path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
-]
-
-router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'gametypes', GameTypes, 'gametype')
-
-urlpatterns = [
-    path('', include(router.urls)),
-    path('register', register_user),
-    path('login', login_user),
     path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
 ]
