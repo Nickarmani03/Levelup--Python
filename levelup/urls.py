@@ -25,7 +25,7 @@ router.register(r'gametypes', GameTypeView, 'gametype')
 router.register(r'games', GameView, 'game')
 # router.register(r'gametypes', GameTypes, 'gametype')
 # router.register(r'games', Games, 'game')
-router.register(r'events', EventView, 'event')
+router.register(r'events', EventView, 'event') #uses the event class
 # router.register(r'events', Event, 'event')
 
 urlpatterns = [

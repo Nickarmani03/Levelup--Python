@@ -19,7 +19,6 @@ class GameView(ViewSet):
 
         # Uses the token passed in the `Authorization` header
         gamer = Gamer.objects.get(user=request.auth.user)
-        
 
         # Create a new Python instance of the Game class
         # and set its properties from what was sent in the
@@ -30,7 +29,6 @@ class GameView(ViewSet):
         game.description = request.data["description"]
         game.number_of_players = request.data["numberOfPlayers"]
         game.maker = request.data["maker"]
-        
 
         # Use the Django ORM to get the record from the database
         # whose `id` is what the client passed as the
@@ -88,7 +86,7 @@ class GameView(ViewSet):
         game.description = request.data["description"]
         game.number_of_players = request.data["numberOfPlayers"]
         game.gamer = gamer
-        game.maker = request.data["maker"]        
+        game.maker = request.data["maker"]
         game.save()
 
         # 204 status code means everything worked but the

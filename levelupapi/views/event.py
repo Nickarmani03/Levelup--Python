@@ -1,5 +1,5 @@
 """View module for handling requests about events"""
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User #pylint:disable=(imported-auth-user)
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
 from rest_framework import status
@@ -7,7 +7,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from levelupapi.models import Game, Event, Gamer
-from levelupapi.views.game import GameSerializer
+# from levelupapi.views.game import GameSerializer
 
 
 class EventView(ViewSet):
@@ -89,7 +89,7 @@ class EventView(ViewSet):
     def list(self, request):
         """Handle GET requests to events resource
         Returns:
-            Response -- JSON serialized list of events
+            Response -- JSON serialized list of events ojb to json
         """
         events = Event.objects.all()
 
@@ -131,7 +131,3 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = ('id', 'title', 'date', 'time', 'description', 'host', 'game')
-
-        
-
-
