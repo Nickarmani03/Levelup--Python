@@ -79,6 +79,7 @@ class GameView(ViewSet):
         # Do mostly the same thing as POST, but instead of
         # creating a new instance of Game, get the game record
         # from the database whose primary key is `pk`
+        # if  http://localhost:8000/games/3, the route parameter of 3 becomes the value of the pk parameter below.
         game = Game.objects.get(pk=pk)
         game.name = request.data["name"]
         game_type = GameType.objects.get(pk=request.data["gameTypeId"])

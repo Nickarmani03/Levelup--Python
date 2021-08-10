@@ -20,7 +20,7 @@ class Event(models.Model):
     title = models.CharField(max_length=100)
     attendees = models.ManyToManyField("Gamer", through="EventGamer", related_name="attending")
 
-    @property
+    @property  # gets who joined
     def joined(self):
         """Add the following custom property to event class.
         """

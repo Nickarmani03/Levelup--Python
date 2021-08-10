@@ -98,7 +98,7 @@ class EventView(ViewSet):
 
         # Set the `joined` property on every event
         for event in events:
-            # Check to see if the gamer is in the attendees list on the event
+            # Check to see if the gamer is in the attendees list on the event. set from the setter
             event.joined = gamer in event.attendees.all()
 
         # Support filtering events by game
@@ -115,7 +115,7 @@ class EventView(ViewSet):
         """Managing gamers signing up for events"""
         # Django uses the `Authorization` header to determine
         # which user is making the request to sign up
-        gamer = Gamer.objects.get(user=request.auth.user)
+        gamer = Gamer.objects.get(user=request.auth.user) #gets the user from the token
 
         try:
             # Handle the case if the client specifies a game
