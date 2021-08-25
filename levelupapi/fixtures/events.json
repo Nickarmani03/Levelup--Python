@@ -9,7 +9,7 @@
             "time": "6:00 PM",
             "description": "Chess is one of the oldest and most popular board games. It is played by two opponents on a checkered board, commonly white and black. The objective of the game is to capture the opponent's king.",
             "title": "Chess",
-            "attendees": [1]
+            "attendees": [1, 2]
         }
     },
     {
@@ -22,7 +22,7 @@
             "time": "7:00 PM",
             "description": "Multiplayer online role-playing game based in the Star Wars universe.",
             "title": "Star Wars: The Old Republic",
-            "attendees": [1]
+            "attendees": [1, 2]
         }
     },{
         "model": "levelupapi.event",

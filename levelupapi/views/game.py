@@ -42,7 +42,7 @@ class GameView(ViewSet):
         try:
             game.save()
             serializer = GameSerializer(game, context={'request': request})
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         # If anything went wrong, catch the exception and
         # send a response with a 400 status code to tell the
@@ -72,13 +72,14 @@ class GameView(ViewSet):
     def update(self, request, pk=None):
         """Handle PUT requests for a game
         Returns:
-            Response -- Empty body with 204 status code
+            Response -- Empty body with 204 no content status code
         """
         gamer = Gamer.objects.get(user=request.auth.user)
 
         # Do mostly the same thing as POST, but instead of
         # creating a new instance of Game, get the game record
         # from the database whose primary key is `pk`
+        # if  http://localhost:8000/games/3, the route parameter of 3 becomes the value of the pk parameter below.
         game = Game.objects.get(pk=pk)
         game.name = request.data["name"]
         game_type = GameType.objects.get(pk=request.data["gameTypeId"])
