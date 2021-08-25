@@ -31,7 +31,7 @@ def login_user(request):
             }
     else:
         data = {'valid': False}
-        
+
         return Response(data)
 
 
