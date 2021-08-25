@@ -42,7 +42,7 @@ class GameView(ViewSet):
         try:
             game.save()
             serializer = GameSerializer(game, context={'request': request})
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
         # If anything went wrong, catch the exception and
         # send a response with a 400 status code to tell the
@@ -72,7 +72,7 @@ class GameView(ViewSet):
     def update(self, request, pk=None):
         """Handle PUT requests for a game
         Returns:
-            Response -- Empty body with 204 status code
+            Response -- Empty body with 204 no content status code
         """
         gamer = Gamer.objects.get(user=request.auth.user)
 

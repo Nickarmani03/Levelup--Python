@@ -17,7 +17,7 @@ class Profile(ViewSet):
             Response -- JSON representation of user info and events
         """
         gamer = Gamer.objects.get(user=request.auth.user)
-        events = Event.objects.filter(attendees=gamer)
+        events = Event.objects.filter(attendees=gamer) #checking if there are games in the attendees list
 
         events = EventSerializer(
             events, many=True, context={'request': request})
@@ -30,6 +30,8 @@ class Profile(ViewSet):
         profile["events"] = events.data
 
         return Response(profile)
+
+#restricts passing user data like passwords
 
 class UserSerializer(serializers.ModelSerializer):
     """JSON serializer for gamer's related Django user"""
