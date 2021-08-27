@@ -12,9 +12,21 @@
         <h2>{{ user.full_name }}</h2>
         <ol>
             {% for game in user.games %}
-            <li>
+            <ul>
                 Name: {{ game.name }}
-            </li>
+            </ul>            
+            {% comment %} <li>
+                Game Type: {{ game.game_type }}
+            </li> {% endcomment %}
+            <ul>
+                Player Count: {{ game.number_of_players }}
+            </ul>
+            <ul>
+                Game Synopsis: {{ game.description }}
+            </ul>
+            <ul>
+               Maker: {{ game.maker }}
+            </ul>
             {% endfor %}
         </ol>
     {% endfor %}

@@ -4,8 +4,5 @@ from .views import userevent_list
 
 urlpatterns = [
     path('reports/usergames', usergame_list),
-]
-
-urlpatterns = [
     path('reports/userevents', userevent_list),
 ]

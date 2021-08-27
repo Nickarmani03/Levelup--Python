@@ -66,6 +66,7 @@ class GameTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         # Assert that the properties on the created resource are correct. response.data is a dictionary
+        
         self.assertEqual(response.data["name"], data ["name"])
         self.assertEqual(response.data["maker"], data ["maker"])
         self.assertEqual(response.data["description"], data ["description"])
